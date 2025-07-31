@@ -20,7 +20,7 @@ const Navbar = () => {
         <>
             <nav className="border-b border-gray-700 px-14 h-16 fixed top-0 right-0 left-0 w-screen flex flex-col justify-between items-center bg-black">
                 <div className="mt-1 md:mt-2 flex flex-row w-screen items-center justify-between p-2 md:px-10 lg:px-14">
-                    <h1 className=" text-2xl font-bold text-black  bg-[linear-gradient(45deg,_orangered,_gold)] bg-clip-text text-transparent">
+                    <h1 className=" text-2xl font-bold text-white">
                         Speech-to-text
                     </h1>
                     <button onClick={displayHam} className="h hamburger md:hidden self-end">

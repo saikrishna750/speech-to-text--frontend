@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import { MdDelete } from "react-icons/md";
+import { API_BASE_URL } from "../config";
 
 const Transcriptions = () => {
     const [history, setHistory] = useState([])
@@ -9,7 +10,7 @@ const Transcriptions = () => {
 
     useEffect(()=>{
         const getTranscriptions = async () => {
-            const response = await axios.get('http://localhost:3000/history')
+            const response = await axios.get(`${API_BASE_URL}/history`)
             const data = await response.data
             // console.log(data)
             setHistory(data)
@@ -21,7 +22,7 @@ const Transcriptions = () => {
     const onDeleteTranscript = async (id) => {
         console.log(`id from frontend ${id}`)
         try{
-            const response = await axios.delete(`http://localhost:3000/delete/${id}`)
+            const response = await axios.delete(`${API_BASE_URL}/delete/${id}`)
             const data = await response.data 
             console.log(data.message)
         }

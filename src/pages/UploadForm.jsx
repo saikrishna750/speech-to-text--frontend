@@ -3,6 +3,7 @@ import {useState, useEffect, useRef} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import axios from 'axios'
 import '../index.css'
+import { API_BASE_URL } from '../config';
 import { FaMicrophone } from "react-icons/fa";
 import { FaCircleStop } from "react-icons/fa6";
 import { MdUploadFile } from "react-icons/md";
@@ -88,7 +89,7 @@ function UploadForm(){
     } 
 
     const getTranscription = async () => {
-        const response = await axios.get("http://localhost:3000/transcript")
+        const response = await axios.get(`${API_BASE_URL}/transcript`)
         const data = await response.data
         setTranscript(data)
     }
@@ -105,7 +106,7 @@ function UploadForm(){
         formData.append('id',id)
         console.log(formData)
         try{
-            const response = await axios.post('http://localhost:3000/upload',formData)
+            const response = await axios.post(`${API_BASE_URL}/upload`,formData)
             // alert('upload successful')
         }
         catch (err) {
@@ -158,7 +159,7 @@ function UploadForm(){
 
 
                     <div className='flex flex-row justify-center items-center m-4 pb-4'>
-                         <button className='bg-[linear-gradient(45deg,_orangered,_gold)] hover:scale-105 btn text-center text-white ml-3 px-6 py-2 rounded-sm font-meidum ' onClick={handleAudioSubmit}>Transcribe</button>
+                         <button className='bg-[linear-gradient(45deg,_orangered,_gold)]  hover:scale-105 btn text-center text-white ml-3 px-6 py-2 rounded-sm font-meidum ' onClick={handleAudioSubmit}>Transcribe</button>
                     </div>
                    
                 </div>
@@ -175,3 +176,4 @@ function UploadForm(){
 }
 
 export default UploadForm 
+
