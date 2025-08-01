@@ -20,10 +20,10 @@ const Navbar = () => {
         <>
             <nav className="border-b border-gray-700 px-14 h-16 fixed top-0 right-0 left-0 w-screen flex flex-col justify-between items-center bg-black">
                 <div className="mt-1 md:mt-2 flex flex-row w-screen items-center justify-between p-2 md:px-10 lg:px-14">
-                    <h1 className="bg-[linear-gradient(45deg,_orangered,_gold)] bg-clip-text text-transparent text-2xl font-bold">
+                    <h1 className="ml-2 bg-[linear-gradient(45deg,_orangered,_gold)] bg-clip-text text-transparent text-2xl font-bold">
                         Transcript
                     </h1>
-                    <button onClick={displayHam} className="h hamburger md:hidden self-end">
+                    <button onClick={displayHam} className="h mr-2 hamburger md:hidden self-end">
                         <GiHamburgerMenu className="h-[25px] w-[25px] text-white"/>
                     </button>
 
@@ -47,10 +47,10 @@ const Navbar = () => {
                     </button>
                     <ul className="text-white flex flex-col items-start list-none gap-1">
                         <li onClick={closeHam}>
-                            <Link to="/" className="hover:text-orange-600 text-lg text-white">Home</Link>
+                            <Link to="/" className="hover:text-orange-500 text-lg text-white">Home</Link>
                         </li>
                         <li onClick={closeHam}>
-                            <Link to="/transcriptions" className="hover:text-orange-600 text-lg text-white">Transcriptions</Link>
+                            <Link to="/transcriptions" className="hover:text-orange-500 text-lg text-white">Transcriptions</Link>
                         </li>
                     </ul>
                 </div>)}

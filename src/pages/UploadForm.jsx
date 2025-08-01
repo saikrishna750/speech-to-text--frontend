@@ -44,6 +44,9 @@ function UploadForm(){
             mediaRecorder.current.onstop = async () => {
                 const recordedBlob = new Blob(chunks.current, {type: 'audio/webm'})
                 //convert to file
+                if (recordedBlob.size <= 0 && recordedBlob){
+                    return (alert("No audio has recorded! Please record again"))
+                }
                 const audioFile = new File([recordedBlob], 'recording.webm', {
                     type: 'audio/webm',
                     lastModified: Date.now(),
@@ -95,12 +98,12 @@ function UploadForm(){
     }
 
     const handleAudioSubmit = async () =>{
-        setLoading(true)
         setTranscript('')
         const id = uuidv4()
         if (!audio){
             return alert ("please choose audio file")
         }
+        setLoading(true)
         let formData = new FormData();
         formData.append('audio',audio)
         formData.append('id',id)
@@ -125,7 +128,7 @@ function UploadForm(){
                 <h1 className='mt-5 md:mt-3 text-[26px] md:text-[32px] text-center font-medium text-white'>Speech-to-Text Conversion </h1>
                 <p className='mt-3 mb-6 text-zinc-500 text-center w-[80%]'>Convert your spoken audio into accurate and structured text using advanced speech recognition technology. </p>
                 <div className='max-w-[90%]'>
-                    <div className='border border-gray-500 rounded-lg p-5 md:p-10 bg-blur/50'>
+                    <div className='border border-gray-500 rounded-lg p-5 py-10 md:p-10 bg-blur/50'>
                         <div className='bg-white rounded-md'>
                             <button>
                                 <input 
