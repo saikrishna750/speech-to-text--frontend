@@ -122,44 +122,52 @@ function UploadForm(){
     return (
         <>  
             <div className='bg bg-white pt-24 flex flex-col justify-start items-center'>
-                <h1 className='text-[20px] md:text-[30px] text-center font-medium text-white'>Speech-to-Text Conversion </h1>
-                <p className='mt-2 mb-6 text-zinc-500 text-center w-[80%]'>Convert your spoken audio into accurate and structured text using advanced speech recognition technology. </p>
+                <h1 className='mt-5 md:mt-3 text-[26px] md:text-[32px] text-center font-medium text-white'>Speech-to-Text Conversion </h1>
+                <p className='mt-3 mb-6 text-zinc-500 text-center w-[80%]'>Convert your spoken audio into accurate and structured text using advanced speech recognition technology. </p>
                 <div className='max-w-[90%]'>
                     <div className='border border-gray-500 rounded-lg p-5 md:p-10 bg-blur/50'>
                         <div className='bg-white rounded-md'>
-                        <button>
-                            <input 
-                            ref ={inputValueRef}
-                            onChange = {onChangeFile}
-                            id="audiofile" 
-                            accept='audio/*' 
-                            type="file" 
-                            className=" rounded-lg p-2" 
-                        />
-                        </button>
-                        </div>
-                        <div className="bg-white mt-4 flex items-center justify-start rounded-lg border">
-                            {isRecording 
-                            ? <button onClick={stopRecording} className=" text-[22px] flex items-center justify-center test-[60px] rounded-full p-1 text-black w-[40px] h-[40px]">
-                                <FaCircleStop/>
+                            <button>
+                                <input 
+                                ref ={inputValueRef}
+                                onChange = {onChangeFile}
+                                id="audiofile" 
+                                accept='audio/*' 
+                                type="file" 
+                                className=" rounded-lg p-2" 
+                            />
                             </button>
-                            : <button onClick={startRecording} className=" flex items-center justify-center test-[60px] rounded-full p-1 text-black w-[40px] h-[40px]">
-                                <FaMicrophone />
-                            </button>}
-                            
-                            {isRecording ? <h2 className='self-center text-center'>{formatTime(seconds)}</h2> : <p className='self-center  text-center'>Record Audio</p>}
                         </div>
+
+                        {isRecording 
+                            ? (
+                            <div onClick={stopRecording} className="bg-white mt-4 flex items-center justify-start rounded-lg border">
+                                <button className=" text-[22px] flex items-center justify-center test-[60px] rounded-full p-1 text-black w-[40px] h-[40px]">
+                                    <FaCircleStop/>
+                                </button>
+                                <h2 className='self-center text-center'>{formatTime(seconds)}</h2> 
+                            </div>
+                        )
+                        : (
+                            <div onClick={startRecording}  className="bg-white mt-4 flex items-center justify-start rounded-lg border">                
+                                <button className=" flex items-center justify-center test-[60px] rounded-full p-1 text-black w-[40px] h-[40px]">
+                                    <FaMicrophone />
+                                </button>
+                               
+                                <p className='self-center  text-center'>Record Audio</p>
+                            </div>
+                        )}
                         
                     </div>
                     
                    
                     <div className='mt-4 flex flex-row items-center justify-center '>
-                        {recordedUrl && <audio className='max-w-[90%] h-[30px] md:h-[35px] ' controls src={recordedUrl} />}
+                        {recordedUrl && <audio className='max-w-[90%] h-[34px] md:h-[38px] ' controls src={recordedUrl} />}
                     </div>
 
 
                     <div className='flex flex-row justify-center items-center m-4 pb-4'>
-                         <button className='bg-[linear-gradient(45deg,_orangered,_gold)]  hover:scale-105 btn text-center text-white ml-3 px-6 py-2 rounded-sm font-meidum ' onClick={handleAudioSubmit}>Transcribe</button>
+                         <button className='bg-[linear-gradient(45deg,_orangered,_gold)]  hover:scale-105 btn text-center text-white ml-3 px-6 pt-2 pb-1 rounded-sm font-meidum ' onClick={handleAudioSubmit}>Transcribe</button>
                     </div>
                    
                 </div>
